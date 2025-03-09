@@ -16,4 +16,8 @@ fun main(args: Array<String>) {
     stepStatuses.forEachIndexed { index, status ->
         println("Krok $index: Pojazdy, które opuściły skrzyżowanie: ${status.leftVehicles}")
     }
+
+    val outputJson = JsonParser.toJson(stepStatuses)
+    
+    FileHandler.writeFile("src/main/resources/output.json", outputJson)
 }
