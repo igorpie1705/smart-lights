@@ -5,7 +5,7 @@ import main.model.TrafficLightState
 data class Intersection(
     val trafficLights: List<TrafficLight>,
     val vehicles: MutableList<Vehicle>,
-    var cycleDuration: Int,
+    var currentCycleDuration: Int,
 ) {
     fun getActiveDirectionPair(): Pair<String, String>? {
         val greenLights = trafficLights.filter { it.state == TrafficLightState.GREEN }
