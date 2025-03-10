@@ -4,7 +4,7 @@ import main.model.TrafficLightState
 import model.*
 
 class SimulationService {
-    private val cycleDuration = 3
+    private val cycleDuration = 5 // oznacza ile maksymalnie kroków może zostać wykonanych przed zmianą świateł
     private val intersection = Intersection(
         trafficLights = listOf(
             TrafficLight("north", TrafficLightState.GREEN),
@@ -51,15 +51,9 @@ class SimulationService {
             intersection.currentCycleDuration = 0
         }
 
-        // KROK 5: Po zakończonym kroku zwiększamy długość obecnego cyklu o 1
-        intersection.currentCycleDuration++
-
-        // KROK 6: zwracamy ID pojazdów, które przejechały
-        return leftVehicles
+        // KROK 5: zwracamy ID pojazdów, które przejechały (sortujemy, aby wyniki były deterministyczne)
+        return leftVehicles.sorted()
     }
-
-
-
 
     fun runCommands(commands: List<Command>): List<StepStatus> {
         val stepStatuses = mutableListOf<StepStatus>()
