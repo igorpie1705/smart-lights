@@ -11,9 +11,7 @@ object JsonParser {
         return json.decodeFromString(jsonString)
     }
 
-    fun toJson(stepStatuses: List<StepStatus>): String {
-        val wrapper = mapOf("stepStatuses" to stepStatuses)
-        return json.encodeToString(wrapper)
+    fun toJson(commandList: List<StepStatus>): String {
+        return json.encodeToString(commandList)
     }
-
 }

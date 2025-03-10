@@ -18,6 +18,8 @@ fun main(args: Array<String>) {
     }
 
     val outputJson = JsonParser.toJson(stepStatuses)
-    
+
     FileHandler.writeFile("src/main/resources/output.json", outputJson)
+
+
 }
